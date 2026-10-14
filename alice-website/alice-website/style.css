@@ -1,0 +1,190 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: dark;
+  --pink: #ff69bd;
+  --bright-pink: #ff168b;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background: radial-gradient(circle at top, #351035, #150719 55%, #08030d);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  position: relative;
+}
+
+.hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  bottom: -50px;
+  color: #ff4fa3;
+  animation: floatUp linear forwards;
+  opacity: 0;
+  filter: drop-shadow(0 0 8px #ff168b);
+  will-change: transform, opacity;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg) scale(.7); opacity: 0; }
+  15% { opacity: .9; }
+  85% { opacity: .7; }
+  100% { transform: translateY(-115vh) rotate(35deg) scale(1.3); opacity: 0; }
+}
+
+.love-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+  padding: 38px 22px;
+  border: 1px solid rgba(255, 90, 180, .28);
+  border-radius: 28px;
+  background: rgba(35, 10, 38, .62);
+  box-shadow: 0 0 45px rgba(255, 35, 145, .12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: appear 1.2s ease both;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.small-heart {
+  color: #ff91d0;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.heart-icon {
+  font-size: 48px;
+  margin-top: 28px;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.18); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.12); }
+}
+
+h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: clamp(58px, 15vw, 94px);
+  line-height: 1.15;
+  color: var(--pink);
+  text-shadow: 0 0 12px var(--bright-pink), 0 0 35px #b60068;
+  margin-top: 8px;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px var(--bright-pink); }
+  to { text-shadow: 0 0 25px var(--bright-pink), 0 0 45px #a90069; }
+}
+
+.underline {
+  font-size: 45px;
+  line-height: 1;
+  color: var(--pink);
+  margin: 0 auto 20px;
+}
+
+.message {
+  font-size: clamp(18px, 4.5vw, 23px);
+  line-height: 1.8;
+  color: #f9e9f7;
+}
+
+.message span {
+  color: var(--pink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.sub-message {
+  color: #d8c5dc;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+
+button {
+  margin-top: 30px;
+  max-width: 100%;
+  padding: 15px 25px;
+  border: 1px solid var(--pink);
+  border-radius: 50px;
+  background: transparent;
+  color: #ff91d0;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(255, 45, 160, .18);
+  transition: background .3s ease, color .3s ease, box-shadow .3s ease, transform .3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:hover,
+button:focus-visible {
+  background: #ff3da5;
+  color: white;
+  box-shadow: 0 0 28px var(--bright-pink);
+  transform: scale(1.04);
+  outline: none;
+}
+
+button:active { transform: scale(.98); }
+
+.surprise {
+  display: none;
+  margin-top: 22px;
+  color: #ffb8df;
+  line-height: 1.8;
+}
+
+.surprise.show { display: block; animation: appear .7s ease both; }
+
+.signature {
+  margin-top: 32px;
+  color: #b59ab6;
+  font-size: 12px;
+}
+
+@media (max-width: 380px) {
+  .love-card { padding: 30px 16px; border-radius: 22px; }
+  .small-heart { font-size: 12px; }
+  .sub-message { font-size: 14px; }
+  button { padding: 13px 18px; font-size: 14px; }
+  .desktop-break { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
